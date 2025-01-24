@@ -1,0 +1,4 @@
+singleQuote: true # 允许使用单引号
+semi: false # 不使用分号
+printWidth: 500 # 换行字符串阈值
+trailingComma: none # 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）

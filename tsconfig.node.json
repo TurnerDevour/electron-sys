@@ -1,0 +1,16 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "include": [
+    "electron.vite.config.*",
+    "src/main/**/*",
+    "src/preload/**/*"
+  ],
+  "compilerOptions": {
+    // 允许 ts 文件导入 .vue 文件
+    "allowImportingTsExtensions": true,
+    "composite": true,
+    "types": [
+      "electron-vite/node"
+    ]
+  }
+}

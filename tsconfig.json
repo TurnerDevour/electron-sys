@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    // 设置为true，编译器会在每个文件中生成sourceMap文件
+    "moduleResolution": "bundler",
+    // 允许导入.ts扩展名
+    "allowImportingTsExtensions": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.web.json"
+    }
+  ]
+}
