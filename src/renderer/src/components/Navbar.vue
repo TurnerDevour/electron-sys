@@ -4,6 +4,8 @@ import listImage from '@renderer/assets/images/list.png'
 import closeImage from '@renderer/assets/images/close.png'
 import expendImage from '@renderer/assets/images/expend.png'
 import shrinkImage from '@renderer/assets/images/shrink.png'
+
+const close = () => {}
 </script>
 
 <template>
@@ -26,7 +28,7 @@ import shrinkImage from '@renderer/assets/images/shrink.png'
       <div class="h-6 w-6 mx-3 cursor-pointer">
         <el-image :src="expendImage" fit="cover" alt="expand" />
       </div>
-      <div class="h-6 w-6 cursor-pointer">
+      <div class="h-6 w-6 cursor-pointer" @click="close">
         <el-image :src="closeImage" fit="cover" alt="close" />
       </div>
     </div>
