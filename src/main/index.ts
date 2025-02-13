@@ -2,6 +2,7 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon512 from '../../resources/icon512.png?asset'
+import ipc from './ipc.ts'
 
 function createWindow(): void {
   // Create the browser window.
@@ -11,6 +12,7 @@ function createWindow(): void {
     show: false, // 不显示窗口
     frame: false, // 无边框窗口
     autoHideMenuBar: true, // 隐藏菜单栏
+    resizable: false, // 不允许缩放
     ...(process.platform === 'linux' ? { icon512 } : {}),
     // 为了在开发中使用自动重载，禁用 nodeIntegration
     webPreferences: {
@@ -48,6 +50,9 @@ app.whenReady().then(() => {
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
+
+  // 监听渲染器进程的事件
+  ipc()
 
   createWindow()
 

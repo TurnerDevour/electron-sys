@@ -5,11 +5,21 @@ import closeImage from '@renderer/assets/images/close.png'
 import expendImage from '@renderer/assets/images/expend.png'
 import shrinkImage from '@renderer/assets/images/shrink.png'
 
-const close = () => {}
+const close = () => {
+  window.api.closeWindow()
+}
+
+const shrink = () => {
+  window.api.minimizeWindow()
+}
+
+const expand = () => {
+  window.api.maximizeWindow()
+}
 </script>
 
 <template>
-  <div class="flex items-center w-full h-20 px-10">
+  <div class="flex items-center w-full h-20 px-10 drag">
     <div class="flex flex-1 items-center">
       <div class="h-8 w-8">
         <el-image :src="logo" fit="cover" alt="logo" />
@@ -18,17 +28,17 @@ const close = () => {}
     </div>
 
     <div class="flex items-center">
-      <div class="h-6 w-6 cursor-pointer">
+      <div class="h-6 w-6 cursor-pointer no-drag">
         <el-image :src="listImage" fit="cover" alt="list" />
       </div>
       <el-divider direction="vertical" />
-      <div class="h-6 w-6 cursor-pointer">
+      <div class="h-6 w-6 cursor-pointer no-drag" @click="shrink">
         <el-image :src="shrinkImage" fit="cover" alt="shrink" />
       </div>
-      <div class="h-6 w-6 mx-3 cursor-pointer">
+      <div class="h-6 w-6 mx-3 cursor-pointer no-drag" @click="expand">
         <el-image :src="expendImage" fit="cover" alt="expand" />
       </div>
-      <div class="h-6 w-6 cursor-pointer" @click="close">
+      <div class="h-6 w-6 cursor-pointer no-drag" @click="close">
         <el-image :src="closeImage" fit="cover" alt="close" />
       </div>
     </div>
