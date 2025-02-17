@@ -5,7 +5,15 @@
   font-weight: normal;
 }
 
-ul, li {
+@font-face {
+  font-family: 'ZhiMangXing';
+  src: url('../fonts/ZhiMangXing-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ul,
+li {
   list-style: none;
 }
 
@@ -14,22 +22,16 @@ ul, li {
   height: 100%;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-  @apply bg-neutral-50 bg-linear-120
+  @apply bg-neutral-50;
 }
 
 a {
   text-decoration: none;
   color: #282828;
-}
-
-@font-face {
-  font-family: 'ZhiMangXing';
-  src: url('../fonts/ZhiMangXing-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
 }
 
 .drag {
@@ -38,4 +40,8 @@ a {
 
 .no-drag {
   -webkit-app-region: no-drag;
+}
+
+.app-container {
+  padding: 20px;
 }

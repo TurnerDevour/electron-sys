@@ -3,9 +3,9 @@ import { electronAPI } from '@electron-toolkit/preload'
 
 // 渲染器的自定义 API
 const api = {
-  // 关闭窗口
-  closeWindow: () => {
-    ipcRenderer.send('close-window')
+  // 退出应用
+  quiteApp: () => {
+    ipcRenderer.send('quit-app')
   },
   // 窗口最小化
   minimizeWindow: () => {
@@ -14,6 +14,10 @@ const api = {
   // 窗口最大化
   maximizeWindow: () => {
     ipcRenderer.send('maximize-window')
+  },
+  // 选择目录
+  selectDirectory: async () => {
+    return await ipcRenderer.invoke('select-directory')
   }
 }
 

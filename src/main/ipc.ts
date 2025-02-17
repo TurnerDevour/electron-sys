@@ -1,12 +1,9 @@
-import { BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, ipcMain, app, dialog } from 'electron'
 
 export default () => {
-  // 关闭窗口
-  ipcMain.on('close-window', () => {
-    const window = BrowserWindow.getFocusedWindow()
-    if (window) {
-      window.close()
-    }
+  // 退出应用
+  ipcMain.on('quit-app', () => {
+    app.quit()
   })
   // 窗口最小化
   ipcMain.on('minimize-window', () => {
@@ -25,5 +22,12 @@ export default () => {
         window.maximize()
       }
     }
+  })
+  // 选择目录
+  ipcMain.handle('select-directory', async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      properties: ['openDirectory']
+    })
+    return filePaths ? filePaths[0] : null
   })
 }

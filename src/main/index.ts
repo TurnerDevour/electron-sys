@@ -13,7 +13,7 @@ function createWindow(): void {
     frame: false, // 无边框窗口
     autoHideMenuBar: true, // 隐藏菜单栏
     resizable: false, // 不允许缩放
-    ...(process.platform === 'linux' ? { icon512 } : {}),
+    ...(process.platform === 'linux' ? { icon512 } : { icon: icon512 }), // 使用 icon512.png 作为应用程序图标
     // 为了在开发中使用自动重载，禁用 nodeIntegration
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),

@@ -1,25 +1,31 @@
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
-    "primary": (//主题色
-      "base": #10B981,
+    'primary': (
+      //主题色
+      'base': #10b981
     ),
-    "success": (//成功色
-      "base": #10B981,
+    'success': (
+      //成功色
+      'base': #10b981
     ),
-    "warning": (//警告色
-      "base": #E6A23C,
+    'warning': (
+      //警告色
+      'base': #e6a23c
     ),
-    "danger": (//危险色
-      "base": #EF4444,
+    'danger': (
+      //危险色
+      'base': #ef4444
     ),
-    "error": (//错误色
-      "base": #F56C6C,
+    'error': (
+      //错误色
+      'base': #f56c6c
     ),
-    "info": (//信息色
-      "base": #909399,
-    ),
-  ),
+    'info': (
+      //信息色
+      'base': #909399
+    )
+  )
 );
 
-@use "element-plus/theme-chalk/src/message.scss";
-@use "element-plus/theme-chalk/src/message-box.scss";
+@use 'element-plus/theme-chalk/src/message.scss';
+@use 'element-plus/theme-chalk/src/message-box.scss';

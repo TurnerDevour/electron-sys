@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import logo from '@renderer/assets/images/icon64.png'
 import listImage from '@renderer/assets/images/list.png'
 import closeImage from '@renderer/assets/images/close.png'
 import expendImage from '@renderer/assets/images/expend.png'
 import shrinkImage from '@renderer/assets/images/shrink.png'
 
+const router = useRouter()
+
+const toConfig = () => {
+  router.push('/config')
+}
+
 const close = () => {
-  window.api.closeWindow()
+  window.api.quiteApp()
 }
 
 const shrink = () => {
@@ -29,7 +36,14 @@ const expand = () => {
 
     <div class="flex items-center">
       <div class="h-6 w-6 cursor-pointer no-drag">
-        <el-image :src="listImage" fit="cover" alt="list" />
+        <el-dropdown trigger="click">
+          <el-image :src="listImage" fit="cover" alt="list" />
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="toConfig">配置信息</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </div>
       <el-divider direction="vertical" />
       <div class="h-6 w-6 cursor-pointer no-drag" @click="shrink">
