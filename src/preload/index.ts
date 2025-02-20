@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { CompressOptions } from '../renderer/src/type'
 
 // 渲染器的自定义 API
 const api = {
@@ -18,6 +19,12 @@ const api = {
   // 选择目录
   selectDirectory: async () => {
     return await ipcRenderer.invoke('select-directory')
+  },
+  compress: (options: CompressOptions) => {
+    ipcRenderer.invoke('compress', options)
+  },
+  stop: () => {
+    ipcRenderer.send('stop')
   }
 }
 

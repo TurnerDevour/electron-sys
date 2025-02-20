@@ -1,6 +1,16 @@
-import { BrowserWindow, ipcMain, app, dialog } from 'electron'
+import {
+  BrowserWindow,
+  ipcMain,
+  app,
+  dialog,
+  IpcMainInvokeEvent
+} from 'electron'
+import { Ffmpeg } from './ffmpeg.ts'
+import { CompressOptions } from '../renderer/src/type.ts'
 
-export default () => {
+export default (win: BrowserWindow) => {
+  const ffmpeg = new Ffmpeg()
+
   // 退出应用
   ipcMain.on('quit-app', () => {
     app.quit()
@@ -29,5 +39,17 @@ export default () => {
       properties: ['openDirectory']
     })
     return filePaths ? filePaths[0] : null
+  })
+  // 压缩
+  ipcMain.handle(
+    'compress',
+    (_event: IpcMainInvokeEvent, options: CompressOptions) => {
+      ffmpeg.init(win, options)
+      ffmpeg.run()
+    }
+  )
+  // 暂停
+  ipcMain.on('stop', () => {
+    ffmpeg.stop()
   })
 }

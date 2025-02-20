@@ -4,7 +4,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon512 from '../../resources/icon512.png?asset'
 import ipc from './ipc.ts'
 
-function createWindow(): void {
+function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1200,
@@ -39,6 +39,8 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  return mainWindow
 }
 
 // 当 Electron 完成初始化并准备好创建浏览器窗口时，将调用此方法。某些 API 只能在此事件发生后使用。
@@ -52,7 +54,8 @@ app.whenReady().then(() => {
   })
 
   // 监听渲染器进程的事件
-  ipc()
+  const win = createWindow()
+  ipc(win)
 
   createWindow()
 

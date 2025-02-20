@@ -12,6 +12,10 @@ declare global {
       maximizeWindow: () => void
       // 选择目录
       selectDirectory: () => Promise<string>
+      // 压缩
+      compress: (options: CompressOptions) => void
+      // 暂停
+      stop: () => void
     }
   }
 }

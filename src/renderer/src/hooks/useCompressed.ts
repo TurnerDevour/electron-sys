@@ -47,6 +47,12 @@ export default () => {
     })
     getCompressFile()
     if (!validate()) return
+    window.api.compress({
+      file: { ...currentVideo.value! },
+      fps: Number(fileConfigStore.fileConfig.frameRate),
+      size: fileConfigStore.fileConfig.resolution,
+      saveDirectory: fileConfigStore.fileConfig.saveFilePath
+    })
   }
 
   const run = () => {
